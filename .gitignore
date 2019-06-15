@@ -3,3 +3,5 @@ client/target
 verifyer/target
 verifyer/.classpath
 verifyer/.project
+client/.classpath
+client/.project

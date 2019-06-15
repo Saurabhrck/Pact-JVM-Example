@@ -57,7 +57,7 @@
 				<version>3.5.10</version>
 				<configuration>
 					<skip>false</skip>
-					<pactDirectory>pacts</pactDirectory> <!-- Defaults to ${project.build.directory}/pacts -->
+					<pactDirectory>target/pacts</pactDirectory> <!-- Defaults to ${project.build.directory}/pacts -->
 					<pactBrokerUrl>http://192.168.99.100:8113</pactBrokerUrl>
 					<projectVersion>${project.version}</projectVersion> <!-- Defaults to ${project.version} -->
 					<trimSnapshot>true</trimSnapshot> <!-- Defaults to false -->
