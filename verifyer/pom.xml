@@ -18,8 +18,33 @@
     <dependency>
       <groupId>au.com.dius</groupId>
       <artifactId>pact-jvm-provider-junit_2.12</artifactId>
-      <version>3.5.10</version>
+      <version>3.6.7</version>
     </dependency>
 
   </dependencies>
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>au.com.dius</groupId>
+				<artifactId>pact-jvm-provider-maven_2.11</artifactId>
+				<version>3.5.10</version>
+				<configuration>
+					<serviceProviders>
+						<!-- You can define as many as you need, but each must have a unique name -->
+						<serviceProvider>
+							<name>sampleprovider</name>
+							<!-- All the provider properties are optional, and have sensible defaults (shown below) -->
+							<protocol>http</protocol>
+							<host>restapi.demoqa.com</host>
+							<port>80</port>
+							<path>/</path>
+							<pactBrokerUrl>http://192.168.99.100:8113/</pactBrokerUrl>
+						</serviceProvider>
+					</serviceProviders>
+					<pactBrokerUrl/>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
 </project>

@@ -1,0 +1,5 @@
+*.prefs
+client/target
+verifyer/target
+verifyer/.classpath
+verifyer/.project
