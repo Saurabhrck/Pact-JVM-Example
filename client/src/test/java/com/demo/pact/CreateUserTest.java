@@ -52,5 +52,31 @@ public class CreateUserTest {
 		System.out.println(code);
 		assertTrue(code==200);
 	}
+	
+	@Pact(consumer = "createWeatherPact", provider = "sampleprovider")
+	public RequestResponsePact createWeatherPact(PactDslWithProvider builder) {
+		Map<String, String> headers = new HashMap();
+		headers.put("Content-Type", "application/json");
+
+		DslPart etaResults = new PactDslJsonBody().stringValue("City", "Kolkata")
+				.stringType("Temperature", "30 Degree celsius").stringType("WeatherDescription", "haze")
+				.stringType("WindSpeed", "3.1 Km per hour").stringType("WindDirectionDegree", "40 Degree").asBody();
+		
+		return builder.uponReceiving("The request")
+				.path("/utilities/weather/city/Kolkata").method("GET")
+				.willRespondWith().status(200).headers(headers).body(etaResults)
+				.toPact();
+
+	}
+	
+	@Test
+	@PactVerification(fragment = "createWeatherPact")
+	public void testPactWeather() {
+		System.out.println();
+		WeatherTest weather = new WeatherTest(provider.getUrl());
+		String temp = weather.checkTemp("Kolkata");
+		System.out.println(temp);
+		assertTrue(Integer.valueOf(temp) < 50);
+	}
 
 }
