@@ -47,7 +47,7 @@ public class WeatherTest
         }
         catch (Exception e) {
         	e.printStackTrace();
-            System.out.println("Unable to get eta, e="+e);
+            System.out.println("Unable to get temp, e="+e);
         }
 		return temp;
     }
