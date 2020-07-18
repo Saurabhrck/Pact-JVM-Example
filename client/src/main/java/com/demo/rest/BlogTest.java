@@ -25,7 +25,7 @@ public class BlogTest {
   public static void main(String[] args) {
     BlogTest weather = new BlogTest();
     System.out.println(weather.checkId(1));
-    System.out.println(weather.createBlog());
+//    System.out.println(weather.createBlog());
   }
 
   public int checkId(int id) {
@@ -33,15 +33,13 @@ public class BlogTest {
     try {
       RequestSpecification httprequest = RestAssured.given();
 
-      httprequest.header("Content-Type", "application/json");
-      httprequest.header("Accept", "application/json");
-
       Response response = httprequest.get("/posts/" + id);
       JsonPath json = response.jsonPath();
-      System.out.println(json.prettify());
+      json.prettyPrint();
+      System.out.println(response.statusCode());
       userId = json.getInt("userId");
     } catch (Exception e) {
-      System.out.println("Unable to get id, e=" + e);
+      System.out.println("Unable to get userId, " + e);
     }
     return userId;
   }
