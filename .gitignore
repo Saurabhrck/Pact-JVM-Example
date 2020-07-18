@@ -5,3 +5,6 @@ verifyer/.classpath
 verifyer/.project
 client/.classpath
 client/.project
+/client/client.iml
+/verifyer/verifyer.iml
+/.idea/
